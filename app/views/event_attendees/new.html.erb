@@ -1,0 +1,5 @@
+
+<%= button_to 'Attend Event' %>
+<% {:controller => "event_attendees",action => "create" :event_id => current_user}%>
+<% :method :post%>
+<% end %>
