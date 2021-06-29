@@ -1,6 +1,7 @@
 <h1>My Events</h1>
 <% @user.events.each  do  |event| %>
-<%=  event.title%>
-<%= event.date %>
-<br>
+  <%= event.creator.email %>
+  <%= event.title %>
+  <%= event.date %>
+  <br>
 <% end %>
