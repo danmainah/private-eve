@@ -14,9 +14,15 @@
   <strong>Date:</strong>
   <%= @event.date %>
 </p>
-<%= form_with url: event_attendees_path , method: :post do |form| %>
-<%= form.hidden_field :event_id , value: @event.id %>
-<%= form.submit 'Attend Event' %>
+
+<h4>Attendees</h4>
+<% @event.attendees.each do |attendee| %>
+  <%= attendee.email %>
+<% end %>
+
+<%= form_with url: event_attendees_path, method: :post do |form| %>
+  <%= form.hidden_field :event_id, value: @event.id %>
+  <%= form.submit 'Attend Event' %>
 <% end %>
 
 <%= %>
