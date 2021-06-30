@@ -4,12 +4,8 @@ class Event < ApplicationRecord
     has_many :event_attendees, foreign_key: 'event_id'
     has_many :attendees, through: :event_attendees, source: :attendee
 
-    def self.past
-      Event.where("date < ?", Time.current)
-    end
+    scope :past, -> { where("date < ?",Time.current)}
 
-    def self.future
-      Event.where("date > ?", Time.current)
-    end
-
+    scope :future, -> {where("date > ?",Time.current)}
+   
 end
