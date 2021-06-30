@@ -1,18 +1,11 @@
 class EventAttendeesController < ApplicationController
-    def show
-        event = Event.find(params[:event_id])
-        @attend = EventAttendee.where('event_id = ?', event.id)
-    end
-
-    def create
-        event = Event.find(params[:event_id])
-        @attended_event = EventAttendee.new(event_id: event.id, user_id: current_user.id)
-    
-        if EventAttendee.where(user_id: current_user.id, event_id: params[:event_id]).exists?
-          redirect_to event_path(event)
-          return
+  def create
+      @event = Event.find(params[:event_id])
+      @event_attended = @event.event_attendees.build(attendee_id: current_user.id)
+       if @event_attended.save
+            redirect_to event_path(params[:event_id])
+        else
+            render body: "not saved"
         end
-    
-        redirect_to event_path(event) if @attended_event.save
-      end
+    end
 end

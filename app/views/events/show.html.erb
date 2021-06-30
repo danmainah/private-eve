@@ -14,6 +14,13 @@
   <strong>Date:</strong>
   <%= @event.date %>
 </p>
+<%= form_with url: event_attendees_path , method: :post do |form| %>
+<%= form.hidden_field :event_id , value: @event.id %>
+<%= form.submit 'Attend Event' %>
+<% end %>
+
+<%= %>
+
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
