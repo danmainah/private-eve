@@ -1,0 +1,13 @@
+<p id="notice"><%= notice %></p>
+
+<% if @past_events.any? %>
+  <h4>Past Events</h4>
+  <%= render 'events_time', obj: @past_events %>
+<% end %>
+
+<% if @upcoming_events.any? %>
+  <h4>Upcoming Events</h4>
+  <%= render 'events_time', obj: @upcoming_events %>
+<% end %>
+
+
