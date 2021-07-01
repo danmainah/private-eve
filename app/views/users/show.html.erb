@@ -1,11 +1,12 @@
-<h3>My Events</h3>
+<h4>Created Events</h4>
 <% @user.events.each do |event| %>
   <%= event.creator.email %> |
   <%= event.title %> |
   <%= event.date %>
   <br>
 <% end %>
-<h3>Your Attended Events</h3>
+<br>
+<h4>Events to attend</h4>
 <% future_events = [] %>
 <% past_events = [] %>
 <% @user.attending_events.each do |event_to_attend| %>
@@ -16,17 +17,18 @@
   <% end %>
 <% end %>
 
-<% if !future_events.empty? %>
-  <p><strong>Your future events</strong></p>
-  <% future_events.each do |future_event| %>
-    <%= future_event.title %>
-    <%= future_event.date %><br>
-  <% end %>
-<% end %>
 <% if !past_events.empty? %>
   <p><strong>Your past events</strong></p>
   <% past_events.each do |past_event| %>
     <%= past_event.title %>
     <%= past_event.date %>
+  <% end %>
+<% end %>
+<br><br>
+<% if !future_events.empty? %>
+  <p><strong>Your future events</strong></p>
+  <% future_events.each do |future_event| %>
+    <%= future_event.title %>
+    <%= future_event.date %><br>
   <% end %>
 <% end %>

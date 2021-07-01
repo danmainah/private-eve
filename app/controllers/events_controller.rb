@@ -25,6 +25,9 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
+        new_event = Event.find(@event.id)
+        @event_attended = new_event.event_attendees.build(attendee_id: current_user.id)
+        @event_attended.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
