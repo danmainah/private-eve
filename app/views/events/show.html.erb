@@ -16,10 +16,11 @@
 </p>
 
 <h4>Attendees</h4>
+<ul>
 <% @event.attendees.each do |attendee| %>
-  <%= attendee.email %>
+ <li> <%= attendee.email %> </li>
 <% end %>
-
+</ul>
 <%= form_with url: event_attendees_path, method: :post do |form| %>
   <%= form.hidden_field :event_id, value: @event.id %>
   <%= form.submit 'Attend Event' %>
