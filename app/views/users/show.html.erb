@@ -18,13 +18,15 @@
 <% end %>
 
 <% if !past_events.empty? %>
-  <p><strong>Your past events</strong></p>
+  <p><strong>Events Attended</strong></p>
+  <ul>
   <% past_events.each do |past_event| %>
-    <%= past_event.title %>
-    <%= past_event.date %>
+    <li><%= past_event.title %>
+       <%= past_event.date %></li>
   <% end %>
+  </ul>
 <% end %>
-<br><br>
+<br>
 <% if !future_events.empty? %>
   <p><strong>Your future events</strong></p>
   <% future_events.each do |future_event| %>
